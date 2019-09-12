@@ -9,11 +9,11 @@ import kotlin.system.exitProcess
 @SpringBootApplication
 class JavaDockerRunApplication : CommandLineRunner {
 
-    @Value("\${param1}")
-    private val param1: String? = null
+    @Value("\${param1:defaultValue1}")
+    private lateinit var param1: String
 
-    @Value("\${param2}")
-    private val param2: String? = null
+    @Value("\${param2:defaultValue2}")
+    private lateinit var param2: String
 
     override fun run(vararg args: String?) {
         println("STARTING THE APPLICATION")

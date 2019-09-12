@@ -3,7 +3,7 @@
 ### Build
 Gradle build
 ```
-./gradlew build
+./gradlew clean build
 ```
 Build docker image:
 ```
@@ -12,25 +12,24 @@ docker build -t java-docker-run .
 
 ### Running
 
-Specify jvm params after image name
+You can either specify unnamed jvm params after image name (default values for Spring Boot params):
 ```
 docker run java-docker-run param1 param2
 ```
+
+Or specify named params as follows:
+```
+docker run java-docker-run --param1=value1 --param2=value2
+```
+
 Expected output
 ```
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::        (v2.1.7.RELEASE)
-
-2019-09-06 17:33:47.916  INFO 1 --- [           main] c.m.j.JavaDockerRunApplicationKt         : Starting JavaDockerRunApplicationKt on 37c1510cac3b with PID 1 (/app.jar started by root in /)
-2019-09-06 17:33:47.921  INFO 1 --- [           main] c.m.j.JavaDockerRunApplicationKt         : No active profile set, falling back to default profiles: default
-2019-09-06 17:33:48.983  INFO 1 --- [           main] c.m.j.JavaDockerRunApplicationKt         : Started JavaDockerRunApplicationKt in 2.009 seconds (JVM running for 2.938)
+2019-09-12 16:49:06.375  INFO 1 --- [           main] c.m.j.JavaDockerRunApplicationKt         : Starting JavaDockerRunApplicationKt on 0feb372c8679 with PID 1 (/app.jar started by root in /)
+2019-09-12 16:49:06.386  INFO 1 --- [           main] c.m.j.JavaDockerRunApplicationKt         : No active profile set, falling back to default profiles: default
+2019-09-12 16:49:07.529  INFO 1 --- [           main] c.m.j.JavaDockerRunApplicationKt         : Started JavaDockerRunApplicationKt in 2.024 seconds (JVM running for 2.874)
 STARTING THE APPLICATION
-Hello World! parameters: param1, param2
+Hello World! jvm parameters: --param1=value1, --param2=value2
+Hello World! spring boot parameters: value1, value2
 APPLICATION FINISHED
 ```
 
